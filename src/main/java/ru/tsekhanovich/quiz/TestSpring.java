@@ -10,8 +10,10 @@ public class TestSpring {
                 "applicationContext.xml"
         );
 
-        TeatBean teatBean = context.getBean("testBean", TeatBean.class);
-        System.out.println(teatBean.getName());
+        MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
+        musicPlayer.PlayMusic();
+        System.out.println(musicPlayer.getName());
+        System.out.println(musicPlayer.getVolume());
         context.close();
     }
 }

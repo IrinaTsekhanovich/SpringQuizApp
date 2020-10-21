@@ -7,9 +7,28 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="testBean"
-          class="ru.tsekhanovich.quiz.TeatBean">
-        <constructor-arg value="Irina"/>
+    <context:property-placeholder location="classpath:musicPlayer.properties"/>
+
+    <bean id="classicalMusic"
+          class="ru.tsekhanovich.quiz.ClassicalMusic">
+    </bean>
+    <bean id="rockMusic"
+          class="ru.tsekhanovich.quiz.RockMusic">
+    </bean>
+    <bean id="rapMusic"
+          class="ru.tsekhanovich.quiz.RapMusic">
     </bean>
 
+    <bean id="musicPlayer"
+        class = "ru.tsekhanovich.quiz.MusicPlayer">
+        <property name="musicList">
+        <list>
+            <ref bean="classicalMusic"/>
+            <ref bean="rockMusic"/>
+            <ref bean="rapMusic"/>
+        </list>
+        </property>
+        <property name="name" value="${musicPlayer.name}"/>
+        <property name="volume" value="${musicPlayer.volume}"/>
+    </bean>
 </beans>
